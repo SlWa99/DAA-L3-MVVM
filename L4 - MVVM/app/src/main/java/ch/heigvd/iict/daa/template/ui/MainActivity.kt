@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         // Lier la Toolbar à l'Activity comme ActionBar
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        supportActionBar?.title = "Labo 4" // Titre de la Toolbar
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -25,19 +26,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_sort_by_creation -> {
-                // Gérer le tri par date de création
+                // Code pour trier par date de création
                 true
             }
             R.id.action_sort_by_schedule -> {
-                // Gérer le tri par date prévue
+                // Code pour trier par date prévue
                 true
             }
             R.id.action_add_note -> {
-                // Gérer l'ajout d'une note aléatoire
+                // Code pour ajouter une note aléatoire
                 true
             }
             R.id.action_delete_all -> {
-                // Gérer la suppression de toutes les notes
+                // Code pour supprimer toutes les notes
                 true
             }
             else -> super.onOptionsItemSelected(item)

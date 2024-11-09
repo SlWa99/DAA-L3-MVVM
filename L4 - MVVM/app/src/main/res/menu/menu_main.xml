@@ -1,20 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_sort_by_creation"
-        android:title="Trier par date de création"
-        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sort"
+        android:title="Tri"
+        android:icon="@drawable/ic_sort"
+        app:showAsAction="always"
+        android:titleTextAppearance="@style/MenuTextStyle">
+        <menu>
+            <item
+                android:id="@+id/action_sort_by_creation"
+                android:title="Trier par date de création"
+                android:titleTextAppearance="@style/MenuTextStyle"/>
+            <item
+                android:id="@+id/action_sort_by_schedule"
+                android:title="Trier par date prévue"
+                android:titleTextAppearance="@style/MenuTextStyle"/>
+        </menu>
+    </item>
 
-    <item android:id="@+id/action_sort_by_schedule"
-        android:title="Trier par date prévue"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/action_add_note"
-        android:title="Créer une Note aléatoire"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/action_delete_all"
-        android:title="Supprimer toutes les Notes"
-        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_more"
+        android:title="Actions"
+        android:icon="@drawable/ic_more"
+        app:showAsAction="always"
+        android:titleTextAppearance="@style/MenuTextStyle">
+        <menu>
+            <item
+                android:id="@+id/action_add_note"
+                android:title="Créer une Note aléatoire"
+                android:titleTextAppearance="@style/MenuTextStyle"/>
+            <item
+                android:id="@+id/action_delete_all"
+                android:title="Supprimer toutes les Notes"
+                android:titleTextAppearance="@style/MenuTextStyle"/>
+        </menu>
+    </item>
 </menu>
