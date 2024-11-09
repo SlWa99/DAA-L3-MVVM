@@ -16,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Labo 4" // Titre de la Toolbar
 
+        // Charger NotesFragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, NotesFragment())
+            .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
