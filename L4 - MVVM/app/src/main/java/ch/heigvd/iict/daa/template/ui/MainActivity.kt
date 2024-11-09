@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
         // Lier la Toolbar à l'Activity comme ActionBar
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Labo 4" // Titre de la Toolbar
 
         // Charger NotesFragment
         supportFragmentManager.beginTransaction()

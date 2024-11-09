@@ -1,5 +1,6 @@
 package ch.heigvd.iict.daa.template.ui
 
+import NotesAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.template.R
-import ch.heigvd.iict.daa.template.entities.Note
+import ch.heigvd.iict.daa.template.entities.*
 
 class NotesFragment : Fragment() {
 
@@ -26,7 +27,7 @@ class NotesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         // Générer une liste de notes aléatoires pour l'exemple
-        val notesList: List<Note> = List(10) { Note.generateRandomNote() }
+        val notesList: List<Note> = List(30) { Note.generateRandomNote() }
 
         // Configurer l'adaptateur
         notesAdapter = NotesAdapter(notesList)
