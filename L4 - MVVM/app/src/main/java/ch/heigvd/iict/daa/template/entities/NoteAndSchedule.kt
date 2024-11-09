@@ -1,4 +1,4 @@
-package ch.heigvd.iict.daa.template.data
+package ch.heigvd.iict.daa.template.entities
 
 import androidx.room.Embedded
 import androidx.room.Relation
