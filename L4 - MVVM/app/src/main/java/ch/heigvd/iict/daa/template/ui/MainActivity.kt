@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Labo 4" // Titre de la Toolbar
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

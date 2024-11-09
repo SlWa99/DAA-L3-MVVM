@@ -3,36 +3,36 @@
 
     <item
         android:id="@+id/action_sort"
-        android:title="Tri"
+        android:title="@string/menu_sort"
         android:icon="@drawable/ic_sort"
         app:showAsAction="always"
         android:titleTextAppearance="@style/MenuTextStyle">
         <menu>
             <item
                 android:id="@+id/action_sort_by_creation"
-                android:title="Trier par date de création"
+                android:title="@string/menu_sort_by_creation"
                 android:titleTextAppearance="@style/MenuTextStyle"/>
             <item
                 android:id="@+id/action_sort_by_schedule"
-                android:title="Trier par date prévue"
+                android:title="@string/menu_sort_by_schedule"
                 android:titleTextAppearance="@style/MenuTextStyle"/>
         </menu>
     </item>
 
     <item
         android:id="@+id/action_more"
-        android:title="Actions"
+        android:title="@string/menu_actions"
         android:icon="@drawable/ic_more"
         app:showAsAction="always"
         android:titleTextAppearance="@style/MenuTextStyle">
         <menu>
             <item
                 android:id="@+id/action_add_note"
-                android:title="Créer une Note aléatoire"
+                android:title="@string/menu_add_note"
                 android:titleTextAppearance="@style/MenuTextStyle"/>
             <item
                 android:id="@+id/action_delete_all"
-                android:title="Supprimer toutes les Notes"
+                android:title="@string/menu_delete_all"
                 android:titleTextAppearance="@style/MenuTextStyle"/>
         </menu>
     </item>

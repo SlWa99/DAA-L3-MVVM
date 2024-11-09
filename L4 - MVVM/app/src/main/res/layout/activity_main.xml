@@ -15,8 +15,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:title="Labo 4"
-            app:popupTheme="@style/PopupMenuDarkText" /> <!-- Thème pour le menu popup -->
+            android:title="@string/app_name"
+            app:popupTheme="@style/PopupMenuDarkText" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout

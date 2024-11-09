@@ -1,4 +1,14 @@
 <resources>
-    <string name="app_name">template</string>
-    <string name="welcome">Welcome to DAA!</string>
+    <!-- Menu Titles -->
+    <string name="menu_sort">Tri</string>
+    <string name="menu_sort_by_creation">Trier par date de création</string>
+    <string name="menu_sort_by_schedule">Trier par date prévue</string>
+    <string name="menu_actions">Actions</string>
+    <string name="menu_add_note">Créer une Note aléatoire</string>
+    <string name="menu_delete_all">Supprimer toutes les Notes</string>
+
+    <!-- Toolbar Title -->
+    <string name="app_name">Labo 4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
