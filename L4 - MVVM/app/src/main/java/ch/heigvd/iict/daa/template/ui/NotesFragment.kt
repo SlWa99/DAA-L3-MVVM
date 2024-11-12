@@ -47,13 +47,13 @@ class NotesFragment : Fragment() {
         notesAdapter = NotesAdapter()
         recyclerView.adapter = notesAdapter
 
-        // Observer les notes et mettre à jour l'adaptateur
-        noteViewModel.allNotes.observe(viewLifecycleOwner, Observer { notesAndSchedules ->
-            notesAndSchedules?.let {
-                val notes = it.map { noteAndSchedule -> noteAndSchedule.note }
-                notesAdapter.submitList(notes)
+    // Observer les notes et mettre à jour l'adaptateur
+            noteViewModel.sortedNotes.observe(viewLifecycleOwner) { notesAndSchedules ->
+                notesAndSchedules?.let { notesList ->
+                    val notes = notesList.map { noteAndSchedule -> noteAndSchedule.note }
+                    notesAdapter.submitList(notes)
+                }
             }
-        })
 
         return view
     }

@@ -1,33 +1,44 @@
 package ch.heigvd.iict.daa.template.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import ch.heigvd.iict.daa.template.entities.Note
 import ch.heigvd.iict.daa.template.entities.NoteAndSchedule
 import ch.heigvd.iict.daa.template.entities.*
 import ch.heigvd.iict.daa.template.repository.NoteRepository
 import kotlinx.coroutines.launch
-import java.util.Calendar
-
 
 class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
-    val allNotes: LiveData<List<NoteAndSchedule>> = repository.allNotes
+
+    private var currentSortType = SortType.NONE
+
+    private val _sortedNotes = MediatorLiveData<List<NoteAndSchedule>>()
+    val sortedNotes: LiveData<List<NoteAndSchedule>> = _sortedNotes
+
+    init {
+        _sortedNotes.addSource(repository.allNotes) { notes ->
+            _sortedNotes.value = when(currentSortType) {
+                SortType.BY_DATE -> notes.sortedBy { it.note.creationDate }
+                SortType.BY_SCHEDULE -> notes.sortedBy { it.schedule?.date }
+                SortType.NONE -> notes
+            }
+        }
+    }
 
     fun generateANote() {
         viewModelScope.launch {
             repository.generateANote()
         }
     }
-/**
+
     fun sortByCreationDate() {
-        allNotes.value = allNotes.value?.sortedBy { it.note.creationDate }
+        currentSortType = SortType.BY_DATE
+        _sortedNotes.value = _sortedNotes.value?.sortedBy { it.note.creationDate }
     }
 
     fun sortBySchedule() {
-        allNotes.value = allNotes.value?.sortedBy { it.schedule?.date }
-    }*/
+        currentSortType = SortType.BY_SCHEDULE
+        _sortedNotes.value = _sortedNotes.value?.sortedBy { it.schedule?.date }
+    }
 
     fun insert(note: NoteAndSchedule) {
         viewModelScope.launch {
@@ -39,5 +50,11 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
         viewModelScope.launch {
             repository.deleteAllNotes()
         }
+    }
+
+    private enum class SortType {
+        NONE,
+        BY_DATE,
+        BY_SCHEDULE
     }
 }
