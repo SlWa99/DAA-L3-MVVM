@@ -3,10 +3,16 @@ package ch.heigvd.iict.daa.template.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ch.heigvd.iict.daa.template.R
+import ch.heigvd.iict.daa.template.entities.*
+import ch.heigvd.iict.daa.template.viewmodel.NoteViewModel
+import java.util.Calendar
 
 class MainActivity : AppCompatActivity() {
+    private val noteViewModel: NoteViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,19 +36,24 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_sort_by_creation -> {
-                // Code pour trier par date de création
+                // Implémente le tri par date de création
+                noteViewModel.sortByCreationDate()
                 true
             }
             R.id.action_sort_by_schedule -> {
-                // Code pour trier par date prévue
+                // Implémente le tri par échéance
+                noteViewModel.sortBySchedule()
                 true
             }
             R.id.action_add_note -> {
-                // Code pour ajouter une note aléatoire
+                // Génère une nouvelle note
+                val newNote = Note.generateRandomNote() // Utiliser une méthode pour générer une note aléatoire
+                noteViewModel.insert(newNote)
                 true
             }
             R.id.action_delete_all -> {
-                // Code pour supprimer toutes les notes
+                // Supprime toutes les notes
+                noteViewModel.deleteAllNotes()
                 true
             }
             else -> super.onOptionsItemSelected(item)

@@ -3,6 +3,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.entities.Note
@@ -10,7 +12,7 @@ import ch.heigvd.iict.daa.template.entities.Type
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NotesAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
+class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(NoteDiffCallback()) {
 
     private val dateFormatter = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
 
@@ -29,7 +31,7 @@ class NotesAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NotesAd
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        val note = notes[position]
+        val note = getItem(position)
 
         // Set title and description
         holder.title.text = note.title
@@ -46,29 +48,31 @@ class NotesAdapter(private val notes: List<Note>) : RecyclerView.Adapter<NotesAd
             }
         )
 
-        // Generate a random schedule for demonstration
+        // Example logic to show schedule icon and date if needed
         val schedule = Note.generateRandomSchedule()
-
         if (schedule != null) {
-            // Show schedule icon and set the date
             holder.scheduleIcon.visibility = View.VISIBLE
             holder.scheduleDate.visibility = View.VISIBLE
-
-            // Calculate time difference in days
             val diffInMillis = schedule.date.timeInMillis - Calendar.getInstance().timeInMillis
             val daysLeft = (diffInMillis / (1000 * 60 * 60 * 24)).toInt()
-
             holder.scheduleDate.text = when {
                 daysLeft < 0 -> "Late"
                 daysLeft < 30 -> "$daysLeft days"
                 else -> "${daysLeft / 30} months"
             }
         } else {
-            // Hide schedule icon and date if no schedule is present
             holder.scheduleIcon.visibility = View.GONE
             holder.scheduleDate.visibility = View.GONE
         }
     }
+}
 
-    override fun getItemCount(): Int = notes.size
+class NoteDiffCallback : DiffUtil.ItemCallback<Note>() {
+    override fun areItemsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem.noteId == newItem.noteId
+    }
+
+    override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
+        return oldItem == newItem
+    }
 }
