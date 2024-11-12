@@ -3,20 +3,31 @@ package ch.heigvd.iict.daa.template.repository
 import androidx.lifecycle.LiveData
 import ch.heigvd.iict.daa.template.data.NoteDao
 import ch.heigvd.iict.daa.template.entities.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class NoteRepository(private val noteDao: NoteDao) {
     val allNotes: LiveData<List<NoteAndSchedule>> = noteDao.getAllNotes()
 
-    fun insert(note: Note) {
-        noteDao.insert(note)
+    suspend fun insert(note: NoteAndSchedule) {
+        withContext(Dispatchers.IO) {
+            noteDao.insert(note.note)
+        }
     }
 
-    fun deleteAllNotes() {
-        noteDao.deleteAllNotes()
+    suspend fun deleteAllNotes() {
+        withContext(Dispatchers.IO) {
+            noteDao.deleteAllNotes()
+        }
     }
 
-    // Nouvelle méthode pour mettre à jour le Schedule
-    fun updateSchedule(schedule: Schedule) {
-        noteDao.updateSchedule(schedule)
+    suspend fun updateSchedule(schedule: Schedule) {
+        withContext(Dispatchers.IO) {
+            noteDao.updateSchedule(schedule)
+        }
+    }
+
+    suspend fun generateANote() {
+        insert(NoteAndSchedule(Note.generateRandomNote(), Note.generateRandomSchedule()))
     }
 }

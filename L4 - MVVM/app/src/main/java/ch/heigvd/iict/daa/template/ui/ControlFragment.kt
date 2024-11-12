@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.repository.NoteRepository
 import ch.heigvd.iict.daa.template.entities.Note
 import ch.heigvd.iict.daa.template.entities.*
-import java.util.Calendar
+import kotlinx.coroutines.launch
 
 class ControlFragment : Fragment() {
 
@@ -26,11 +27,9 @@ class ControlFragment : Fragment() {
 
         noteCountTextView = view.findViewById(R.id.note_count)
 
-        // Obtenez les références des boutons
         val createButton: Button = view.findViewById(R.id.button_create_note)
         val deleteButton: Button = view.findViewById(R.id.button_delete_all)
 
-        // Configurez les actions des boutons
         createButton.setOnClickListener {
             addRandomNote()
         }
@@ -43,23 +42,14 @@ class ControlFragment : Fragment() {
     }
 
     private fun addRandomNote() {
-        val newNote = Note(
-            noteId = null,
-            state = State.IN_PROGRESS,
-            title = "Note aléatoire",
-            text = "Contenu de la note aléatoire",
-            creationDate = Calendar.getInstance(),
-            type = Type.WORK
-        )
-
-        Thread {
-            noteRepository.insert(newNote)
-        }.start()
+        viewLifecycleOwner.lifecycleScope.launch {
+            noteRepository.generateANote()
+        }
     }
 
     private fun deleteAllNotes() {
-        Thread {
+        viewLifecycleOwner.lifecycleScope.launch {
             noteRepository.deleteAllNotes()
-        }.start()
+        }
     }
 }

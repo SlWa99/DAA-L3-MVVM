@@ -7,11 +7,22 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.entities.*
+import ch.heigvd.iict.daa.template.repository.NoteRepository
 import ch.heigvd.iict.daa.template.viewmodel.NoteViewModel
 import java.util.Calendar
+import ch.heigvd.iict.daa.template.data.AppDatabase
+import ch.heigvd.iict.daa.template.viewmodel.NoteViewModelFactory
+
 
 class MainActivity : AppCompatActivity() {
-    private val noteViewModel: NoteViewModel by viewModels()
+
+    // Initialisation du NoteRepository et du NoteViewModel avec une instance de la base de données
+    private val noteViewModel: NoteViewModel by viewModels {
+        val noteDao = AppDatabase.getDatabase(application).noteDao()
+        val noteRepository = NoteRepository(noteDao)
+        NoteViewModelFactory(noteRepository)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+        return when (item.itemId) {/**
             R.id.action_sort_by_creation -> {
                 // Implémente le tri par date de création
                 noteViewModel.sortByCreationDate()
@@ -44,11 +55,10 @@ class MainActivity : AppCompatActivity() {
                 // Implémente le tri par échéance
                 noteViewModel.sortBySchedule()
                 true
-            }
+            }*/
             R.id.action_add_note -> {
                 // Génère une nouvelle note
-                val newNote = Note.generateRandomNote() // Utiliser une méthode pour générer une note aléatoire
-                noteViewModel.insert(newNote)
+                noteViewModel.generateANote()
                 true
             }
             R.id.action_delete_all -> {

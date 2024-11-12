@@ -10,14 +10,14 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.template.R
-import ch.heigvd.iict.daa.template.entities.*
 import ch.heigvd.iict.daa.template.viewmodel.NoteViewModel
 import ch.heigvd.iict.daa.template.viewmodel.NoteViewModelFactory
-import androidx.lifecycle.Observer
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import ch.heigvd.iict.daa.template.data.AppDatabase
 import ch.heigvd.iict.daa.template.repository.NoteRepository
+import ch.heigvd.iict.daa.template.ui.*
+import androidx.lifecycle.Observer
 
 class NotesFragment : Fragment() {
 
@@ -43,13 +43,13 @@ class NotesFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_notes)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Initialisation de l'adaptateur sans liste vide (car ListAdapter gère la liste elle-même)
+        // Initialisation de l'adaptateur
         notesAdapter = NotesAdapter()
         recyclerView.adapter = notesAdapter
 
+        // Observer les notes et mettre à jour l'adaptateur
         noteViewModel.allNotes.observe(viewLifecycleOwner, Observer { notesAndSchedules ->
             notesAndSchedules?.let {
-                // Extraire les notes uniquement
                 val notes = it.map { noteAndSchedule -> noteAndSchedule.note }
                 notesAdapter.submitList(notes)
             }
