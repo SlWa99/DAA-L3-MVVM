@@ -3,16 +3,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.entities.Note
+import ch.heigvd.iict.daa.template.entities.State
 import ch.heigvd.iict.daa.template.entities.Type
 import java.text.SimpleDateFormat
 import java.util.*
 
 class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(NoteDiffCallback()) {
+
 
     private val dateFormatter = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
 
@@ -29,6 +32,7 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(NoteDiffCall
             .inflate(R.layout.item_note, parent, false)
         return NoteViewHolder(view)
     }
+
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = getItem(position)
@@ -48,7 +52,18 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(NoteDiffCall
             }
         )
 
-        // Example logic to show schedule icon and date if needed
+        // Set color based on note type
+        holder.typeIcon.setColorFilter(
+            ContextCompat.getColor(
+                holder.itemView.context,
+                when (note.state) {
+                    State.DONE -> R.color.green
+                    State.IN_PROGRESS -> R.color.black
+                }
+            )
+        )
+
+        // Schedule icon and date display logic
         val schedule = Note.generateRandomSchedule()
         if (schedule != null) {
             holder.scheduleIcon.visibility = View.VISIBLE
@@ -56,7 +71,12 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(NoteDiffCall
             val diffInMillis = schedule.date.timeInMillis - Calendar.getInstance().timeInMillis
             val daysLeft = (diffInMillis / (1000 * 60 * 60 * 24)).toInt()
             holder.scheduleDate.text = when {
-                daysLeft < 0 -> "Late"
+                daysLeft < 0 -> {
+                    holder.scheduleIcon.setColorFilter(
+                        ContextCompat.getColor(holder.itemView.context, R.color.red)
+                    )
+                    "Late"
+                }
                 daysLeft < 30 -> "$daysLeft days"
                 else -> "${daysLeft / 30} months"
             }
@@ -64,6 +84,7 @@ class NotesAdapter : ListAdapter<Note, NotesAdapter.NoteViewHolder>(NoteDiffCall
             holder.scheduleIcon.visibility = View.GONE
             holder.scheduleDate.visibility = View.GONE
         }
+
     }
 }
 

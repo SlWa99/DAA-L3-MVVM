@@ -3,6 +3,7 @@ package ch.heigvd.iict.daa.template.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ch.heigvd.iict.daa.template.R
@@ -12,6 +13,9 @@ import ch.heigvd.iict.daa.template.viewmodel.NoteViewModel
 import ch.heigvd.iict.daa.template.viewmodel.NoteViewModelFactory
 
 class MainActivity : AppCompatActivity() {
+
+    //val btnSortByCreationDate = findViewById<Button>(R.id.action_sort_by_creation)
+    //val btnSortBySchedule = findViewById<Button>(R.id.action_sort_by_schedule)
 
     private val noteViewModel: NoteViewModel by viewModels {
         val noteDao = AppDatabase.getDatabase(application).noteDao()

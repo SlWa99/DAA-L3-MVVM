@@ -10,6 +10,8 @@ import kotlinx.coroutines.launch
 class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
 
     private var currentSortType = SortType.NONE
+    val allNotes = repository.allNotes
+    val notesCount = repository.notesCount
 
     private val _sortedNotes = MediatorLiveData<List<NoteAndSchedule>>()
     val sortedNotes: LiveData<List<NoteAndSchedule>> = _sortedNotes
@@ -40,11 +42,6 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
         _sortedNotes.value = _sortedNotes.value?.sortedBy { it.schedule?.date }
     }
 
-    fun insert(note: NoteAndSchedule) {
-        viewModelScope.launch {
-            repository.insert(note)
-        }
-    }
 
     fun deleteAllNotes() {
         viewModelScope.launch {

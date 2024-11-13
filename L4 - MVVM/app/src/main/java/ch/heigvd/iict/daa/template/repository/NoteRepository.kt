@@ -8,6 +8,7 @@ import kotlinx.coroutines.withContext
 
 class NoteRepository(private val noteDao: NoteDao) {
     val allNotes: LiveData<List<NoteAndSchedule>> = noteDao.getAllNotes()
+    val notesCount = noteDao.getCount()
 
     suspend fun insert(note: NoteAndSchedule) {
         withContext(Dispatchers.IO) {
