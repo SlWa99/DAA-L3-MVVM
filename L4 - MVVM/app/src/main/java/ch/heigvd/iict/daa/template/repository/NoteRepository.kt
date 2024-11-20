@@ -12,7 +12,14 @@ class NoteRepository(private val noteDao: NoteDao) {
 
     suspend fun insert(note: NoteAndSchedule) {
         withContext(Dispatchers.IO) {
-            noteDao.insert(note.note)
+            // 1. Insérer la note et récupérer son ID
+            val noteId = noteDao.insertNote(note.note)  // Utiliser insertNote au lieu de insert
+
+            // 2. Si un schedule existe, l'insérer avec l'ID de la note
+            note.schedule?.let { schedule ->
+                schedule.ownerId = noteId  // Définir l'ownerId avec l'ID de la note
+                noteDao.insertSchedule(schedule)
+            }
         }
     }
 
