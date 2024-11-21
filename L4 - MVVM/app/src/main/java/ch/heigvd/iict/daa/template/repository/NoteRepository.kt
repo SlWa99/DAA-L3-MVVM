@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class NoteRepository(private val noteDao: NoteDao) {
+
     val allNotes: LiveData<List<NoteAndSchedule>> = noteDao.getAllNotes()
     val notesCount = noteDao.getCount()
 
@@ -26,12 +27,6 @@ class NoteRepository(private val noteDao: NoteDao) {
     suspend fun deleteAllNotes() {
         withContext(Dispatchers.IO) {
             noteDao.deleteAllNotes()
-        }
-    }
-
-    suspend fun updateSchedule(schedule: Schedule) {
-        withContext(Dispatchers.IO) {
-            noteDao.updateSchedule(schedule)
         }
     }
 

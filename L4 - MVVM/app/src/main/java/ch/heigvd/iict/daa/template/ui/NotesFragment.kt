@@ -21,18 +21,17 @@ import ch.heigvd.iict.daa.template.repository.NoteRepository
 class NotesFragment : Fragment() {
 
     private lateinit var notesAdapter: NotesAdapter
-
     private val noteViewModel: NoteViewModel by activityViewModels {
         val noteDao = AppDatabase.getDatabase(requireContext()).noteDao()
         val repository = NoteRepository(noteDao)
         NoteViewModelFactory(repository)
     }
 
+    // todo tu dois mieux capter le lien entre le items de notesadapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Gonfle uniquement le layout ici
         return inflater.inflate(R.layout.fragment_notes, container, false)
     }
 
@@ -52,6 +51,7 @@ class NotesFragment : Fragment() {
             notesAdapter.updateItems(notesAndSchedules)
         }
 
+        // todo capter et expliquer à val ... comment le viewmodel fait le tri avec cet énum ?
         noteViewModel._sortedNotes.observe(viewLifecycleOwner) { sortType ->
             when (sortType) {
                 NoteViewModel.SortType.BY_DATE -> notesAdapter.sortByCreationDate()

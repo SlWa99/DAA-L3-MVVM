@@ -10,10 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.repository.NoteRepository
-import ch.heigvd.iict.daa.template.entities.Note
-import ch.heigvd.iict.daa.template.entities.*
 import kotlinx.coroutines.launch
 
+//TODO --> je crois qu'on peut mettre une seule classe pour les deux fragments (manipulation de la liste)
 class ControlFragment : Fragment() {
 
     private lateinit var noteRepository: NoteRepository

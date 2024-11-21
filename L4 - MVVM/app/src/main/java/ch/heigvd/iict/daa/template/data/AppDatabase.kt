@@ -6,12 +6,12 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import ch.heigvd.iict.daa.template.entities.*
-import ch.heigvd.iict.daa.template.data.AppDatabase
 
 
 @Database(entities = [Note::class, Schedule::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun noteDao(): NoteDao
 
     companion object {

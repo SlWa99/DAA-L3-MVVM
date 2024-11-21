@@ -5,7 +5,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import ch.heigvd.iict.daa.template.entities.*
 
 @Dao
@@ -30,7 +29,4 @@ interface NoteDao {
 
     @Query("SELECT COUNT(*) FROM Note")
     fun getCount() : LiveData<Long>
-
-    @Update
-    fun updateSchedule(schedule: Schedule)
 }

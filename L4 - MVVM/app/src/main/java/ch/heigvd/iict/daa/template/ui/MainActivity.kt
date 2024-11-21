@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ch.heigvd.iict.daa.template.R
@@ -47,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    //TODO --> les deux premiers
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_sort_by_creation -> {

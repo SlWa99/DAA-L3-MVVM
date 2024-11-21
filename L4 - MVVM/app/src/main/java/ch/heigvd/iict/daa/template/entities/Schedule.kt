@@ -6,7 +6,8 @@ import java.util.*
 
 @Entity
 data class Schedule(
-    @PrimaryKey(autoGenerate = true) var scheduleId : Long?,
+    @PrimaryKey(autoGenerate = true)
+    var scheduleId : Long?,
     var ownerId : Long,
     var date : Calendar
 )

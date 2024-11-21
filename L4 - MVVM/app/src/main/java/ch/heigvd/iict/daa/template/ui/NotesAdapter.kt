@@ -1,32 +1,20 @@
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.template.R
-import ch.heigvd.iict.daa.template.entities.Note
-import ch.heigvd.iict.daa.template.entities.NoteAndSchedule
-import ch.heigvd.iict.daa.template.entities.State
-import ch.heigvd.iict.daa.template.entities.Type
-import java.text.SimpleDateFormat
+import ch.heigvd.iict.daa.template.entities.*
 import java.util.*
 
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
     var items = listOf<NoteAndSchedule>()
-
-    companion object {
-        const val SCHEDULE_VIEW_TYPE = 1
-        const val NO_SCHEDULE_VIEW_TYPE = 0
-    }
-
-    private val dateFormatter = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+    val SCHEDULE_VIEW_TYPE = 1
+    val NO_SCHEDULE_VIEW_TYPE = 0
 
     // ViewHolder pour chaque élément de la liste
     inner class NoteViewHolder(view: View) : RecyclerView.ViewHolder(view) {
