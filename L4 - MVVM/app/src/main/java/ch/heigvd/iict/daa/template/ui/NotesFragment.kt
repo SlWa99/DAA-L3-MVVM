@@ -12,16 +12,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.viewmodel.NoteViewModel
 import ch.heigvd.iict.daa.template.viewmodel.NoteViewModelFactory
-import android.content.Context
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import ch.heigvd.iict.daa.template.data.AppDatabase
+import ch.heigvd.iict.daa.template.databinding.FragmentNotesBinding
 import ch.heigvd.iict.daa.template.repository.NoteRepository
 
 /**
@@ -30,6 +29,8 @@ import ch.heigvd.iict.daa.template.repository.NoteRepository
 class NotesFragment : Fragment() {
 
     private lateinit var notesAdapter: NotesAdapter
+
+    private lateinit var binding: FragmentNotesBinding
 
     // Initialisation du ViewModel partagé avec l'activité principale
     private val noteViewModel: NoteViewModel by activityViewModels {
@@ -46,12 +47,13 @@ class NotesFragment : Fragment() {
      * @param savedInstanceState L'état sauvegardé, s'il existe.
      * @return La vue chargée pour ce fragment.
      */
-    // todo tu dois mieux capter le lien entre le items de notesadapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_notes, container, false)
+    ): View {
+        binding = FragmentNotesBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
     /**
@@ -82,8 +84,7 @@ class NotesFragment : Fragment() {
          * Observer les changements de type de tri (_sortedNotes).
          * Applique le tri correspondant dans l'adaptateur en fonction de l'énumération [SortType].
          */
-        // todo capter et expliquer à val ... comment le viewmodel fait le tri avec cet énum ?
-        noteViewModel._sortedNotes.observe(viewLifecycleOwner) { sortType ->
+        noteViewModel.sortedNotes.observe(viewLifecycleOwner) { sortType ->
             when (sortType) {
                 // Tri par date de création des notes
                 NoteViewModel.SortType.BY_DATE -> notesAdapter.sortByCreationDate()

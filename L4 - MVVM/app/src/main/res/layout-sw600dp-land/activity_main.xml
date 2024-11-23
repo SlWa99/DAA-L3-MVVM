@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : activity_main.xml
+    Description    : Layout contenant deux fragments disposés horizontalement, l'un pour les notes
+                     et l'autre pour le contrôle de l'application.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <!-- AppBarLayout pour contenir la Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title="@string/app_name"
+            app:popupTheme="@style/PopupMenuDarkText" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Fragment pour afficher les notes -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_notes"
+        android:name="ch.heigvd.iict.daa.template.ui.NotesFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/fragment_control"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_notes_list" />
+
+    <!-- Fragment pour le contrôle avec contenu centré verticalement -->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_control"
+        android:name="ch.heigvd.iict.daa.template.ui.ControlFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fragment_notes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.30"
+        tools:layout="@layout/fragment_control" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

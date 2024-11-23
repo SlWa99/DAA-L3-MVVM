@@ -13,7 +13,7 @@
         android:id="@+id/action_sort"
         android:title="@string/menu_sort"
         android:icon="@drawable/ic_sort"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom|withText"
         android:titleTextAppearance="@style/MenuTextStyle">
         <menu>
             <item

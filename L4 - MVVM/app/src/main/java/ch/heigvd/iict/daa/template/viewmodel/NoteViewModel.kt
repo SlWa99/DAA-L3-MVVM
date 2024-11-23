@@ -21,7 +21,7 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
     val allNotes = repository.allNotes
     val countNotes = repository.notesCount
 
-    val _sortedNotes = MutableLiveData(SortType.BY_DATE)
+    val sortedNotes = MutableLiveData(SortType.BY_DATE)
 
     /**
      * Génère une nouvelle note aléatoire via le repository.
