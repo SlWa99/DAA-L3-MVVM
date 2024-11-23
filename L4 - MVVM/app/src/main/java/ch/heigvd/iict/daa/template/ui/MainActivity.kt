@@ -78,15 +78,17 @@ class MainActivity : AppCompatActivity() {
      */
     //TODO --> les deux premiers
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val sortedChoice = getString(R.string.sorted_choice)
+
         return when (item.itemId) {
             R.id.action_sort_by_creation -> {
                 noteViewModel._sortedNotes.postValue(NoteViewModel.SortType.BY_DATE)
-                getPreferences(Context.MODE_PRIVATE).edit().putString("sorted_choice", "CreationDate").apply()
+                getPreferences(Context.MODE_PRIVATE).edit().putString(sortedChoice, getString(R.string.creation_date)).apply()
                 true
             }
             R.id.action_sort_by_schedule -> {
                 noteViewModel._sortedNotes.postValue(NoteViewModel.SortType.BY_SCHEDULE)
-                getPreferences(Context.MODE_PRIVATE).edit().putString("sorted_choice", "Schedule").apply()
+                getPreferences(Context.MODE_PRIVATE).edit().putString(sortedChoice, getString(R.string.schedule)).apply()
                 true
             }
             R.id.action_add_note -> {

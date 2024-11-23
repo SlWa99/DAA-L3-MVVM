@@ -7,8 +7,11 @@
  */
 package ch.heigvd.iict.daa.template.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.test.core.app.ApplicationProvider
+import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.repository.NoteRepository
 
 /**
@@ -28,6 +31,7 @@ class NoteViewModelFactory(private val repository: NoteRepository) : ViewModelPr
             @Suppress("UNCHECKED_CAST")
             return NoteViewModel(repository) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+        throw IllegalArgumentException(ApplicationProvider.getApplicationContext<Context>()
+            .getString(R.string.error_unknown_viewmodel))
     }
 }

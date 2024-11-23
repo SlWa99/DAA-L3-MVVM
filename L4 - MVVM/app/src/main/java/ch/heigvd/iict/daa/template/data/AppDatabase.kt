@@ -12,6 +12,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.entities.*
 
 /**
@@ -42,7 +43,7 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "note_database"
+                    context.getString(R.string.note_database) // TODO : DB name ?
                 ).build()
                 INSTANCE = instance
                 instance
