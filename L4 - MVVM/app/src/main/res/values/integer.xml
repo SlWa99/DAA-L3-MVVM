@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : integer.xml
+    Description    : Contient les integers utilisés dans l'application.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 23 novembre 2024
+-->
+<resources>
+    <integer name="millis_in_a_day">86400000</integer>
+    <integer name="day_in_mounth">30</integer>
+</resources>

@@ -64,11 +64,12 @@ class NoteDaoTest {
      */
     @Test
     fun insertAndRetrieveNote() = runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
         val note = Note(
             noteId = null,
             state = State.IN_PROGRESS,
-            title = "Test Note",
-            text = "This is a test note",
+            title = context.getString(R.string.test_note_title),
+            text = context.getString(R.string.test_note_txt),
             creationDate = Calendar.getInstance(),
             type = Type.WORK
         )
@@ -80,6 +81,6 @@ class NoteDaoTest {
         val notes = noteDao.getAllNotes().value
         assertNotNull(notes)
         assertEquals(1, notes?.size)
-        assertEquals("Test Note", notes?.get(0)?.note?.title)
+        assertEquals(context.getString(R.string.test_note_title), notes?.get(0)?.note?.title)
     }
 }

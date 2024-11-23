@@ -84,7 +84,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
                 val remainingTimeInMillis =
                     schedule.date.timeInMillis - Calendar.getInstance().timeInMillis
-                val daysLeft = (remainingTimeInMillis / (1000 * 60 * 60 * 24)).toInt()
+                val daysLeft = (remainingTimeInMillis / (R.integer.millis_in_a_day)).toInt()
 
                 scheduleDate?.text = when {
                     daysLeft < 0 -> {
@@ -94,7 +94,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
                         )
                         "Late"
                     }
-                    daysLeft < 30 -> {
+                    daysLeft < R.integer.day_in_mounth -> {
                         // Si la date est dans les 30 jours
                         scheduleIcon?.setColorFilter(
                             ContextCompat.getColor(itemView.context, R.color.black)
@@ -106,7 +106,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
                         scheduleIcon?.setColorFilter(
                             ContextCompat.getColor(itemView.context, R.color.black)
                         )
-                        "${daysLeft / 30} months"
+                        "${daysLeft / R.integer.day_in_mounth} months"
                     }
                 }
             } else {

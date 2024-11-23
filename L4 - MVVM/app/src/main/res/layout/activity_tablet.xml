@@ -14,14 +14,14 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_notes"
         android:name="ch.heigvd.iict.daa.template.ui.NotesFragment"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/null_size"
         android:layout_weight="1"
         android:layout_height="match_parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_control"
         android:name="ch.heigvd.iict.daa.template.ui.ControlFragment"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/null_size"
         android:layout_weight="1"
         android:layout_height="match_parent" />
 
