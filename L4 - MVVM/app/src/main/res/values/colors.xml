@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : colors.xml
+    Description    : Définition des couleurs utilisées dans l'application.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

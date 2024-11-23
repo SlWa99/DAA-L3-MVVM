@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : fragment_notes_schedule.xml
+    Description    : Layout représentant un élément de la liste des notes avec un horaire, incluant
+                     une icône pour la note, une icône d'horloge pour le calendrier, ainsi que des
+                     informations sur le titre et la description de la note.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"

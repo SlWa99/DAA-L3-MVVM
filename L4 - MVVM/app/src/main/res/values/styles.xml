@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : styles.xml
+    Description    : Définit les styles utilisés dans l'application,
+                     notamment pour les éléments de menu et les popups.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <resources>
     <style name="MenuTextStyle" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/black</item> <!-- Noir -->

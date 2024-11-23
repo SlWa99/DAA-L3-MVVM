@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : AndroidManifest.xml
+    Description    : Déclaration des composants essentiels de l'application (activités, permissions, etc.) ainsi que la configuration de l'application.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <application

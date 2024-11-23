@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : themes.xml
+    Description    : Définit les styles et thèmes pour l'application,
+                     incluant un thème personnalisé basé sur Material3
+                     pour les modes jour et nuit sans barre d'action.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="DAA.Theme.Template" parent="Theme.Material3.DayNight.NoActionBar">

@@ -1,3 +1,11 @@
+/**
+ * Nom du fichier : ControlFragment.kt
+ * Description    : Fragment contrôleur pour gérer l'ajout et la suppression de notes
+ *                  dans l'interface utilisateur.
+ *                  Permet d'ajouter une note aléatoire et de supprimer toutes les notes existantes.
+ * Auteur         : Bugna, Slimani & Steiner
+ * Date           : 22 novembre 2024
+ */
 package ch.heigvd.iict.daa.template.ui
 
 import android.os.Bundle
@@ -12,12 +20,24 @@ import ch.heigvd.iict.daa.template.R
 import ch.heigvd.iict.daa.template.repository.NoteRepository
 import kotlinx.coroutines.launch
 
+/**
+ * Fragment contrôleur pour gérer l'ajout et la suppression de notes dans l'interface utilisateur.
+ * Permet d'ajouter une note aléatoire et de supprimer toutes les notes existantes.
+ */
 //TODO --> je crois qu'on peut mettre une seule classe pour les deux fragments (manipulation de la liste)
 class ControlFragment : Fragment() {
 
     private lateinit var noteRepository: NoteRepository
     private lateinit var noteCountTextView: TextView
 
+    /**
+     * Initialise et retourne la vue associée au fragment.
+     *
+     * @param inflater Permet de charger le layout XML.
+     * @param container Le conteneur dans lequel la vue est placée.
+     * @param savedInstanceState État sauvegardé du fragment.
+     * @return La vue créée.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,12 +60,18 @@ class ControlFragment : Fragment() {
         return view
     }
 
+    /**
+     * Ajoute une note aléatoire en utilisant le repository.
+     */
     private fun addRandomNote() {
         viewLifecycleOwner.lifecycleScope.launch {
             noteRepository.generateANote()
         }
     }
 
+    /**
+     * Supprime toutes les notes en utilisant le repository.
+     */
     private fun deleteAllNotes() {
         viewLifecycleOwner.lifecycleScope.launch {
             noteRepository.deleteAllNotes()

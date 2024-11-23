@@ -1,5 +1,11 @@
+/**
+ * Nom du fichier : NoteDaoTest.kt
+ * Description    : Classe de test unitaire pour le DAO de la base de données des notes.
+ *                  Permet de tester les opérations d'insertion et de récupération des notes.
+ * Auteur         : Bugna, Slimani & Steiner
+ * Date           : 22 novembre 2024
+ */
 package ch.heigvd.iict.daa.template
-
 
 import android.content.Context
 import androidx.room.Room
@@ -18,12 +24,22 @@ import org.junit.runner.RunWith
 import java.util.Calendar
 import org.junit.runners.JUnit4
 
+/**
+ * Classe de test unitaire pour le DAO de la base de données des notes.
+ * Permet de tester les opérations d'insertion et de récupération des notes.
+ */
 @RunWith(JUnit4::class)
 class NoteDaoTest {
 
+    // DB utilisée pour les tests (en mémoire).
     private lateinit var database: AppDatabase
+
+    // DAO utilisé pour interagir avec la DB pendant les tests.
     private lateinit var noteDao: NoteDao
 
+    /**
+     * Configure la base de données et initialise le DAO avant chaque test.
+     */
     @Before
     fun setUp() {
         // Utilise une base de données en mémoire pour les tests
@@ -34,11 +50,18 @@ class NoteDaoTest {
         noteDao = database.noteDao()
     }
 
+    /**
+     * Ferme la base de données après chaque test pour libérer les ressources.
+     */
     @After
     fun tearDown() {
         database.close()
     }
 
+    /**
+     * Vérifie qu'une note peut être insérée dans la base de données
+     * et récupérée correctement.
+     */
     @Test
     fun insertAndRetrieveNote() = runBlocking {
         val note = Note(

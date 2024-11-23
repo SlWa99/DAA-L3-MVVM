@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : activity_tablet.xml
+    Description    : Layout contenant deux fragments disposés horizontalement, l'un pour les notes
+                     et l'autre pour le contrôle de l'application.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"

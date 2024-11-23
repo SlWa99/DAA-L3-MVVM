@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : strings.xml
+    Description    : Contient les chaînes de caractères utilisées dans l'application,
+                     y compris les titres des menus
+                     et le titre de la barre d'outils.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <resources>
     <!-- Menu Titles -->
     <string name="menu_sort">Tri</string>

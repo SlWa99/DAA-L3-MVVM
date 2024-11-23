@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : fragment_notes_list.xml
+    Description    : Layout représentant un élément de la liste des notes, avec une icône, un titre
+                     et une description affichés à l'aide d'un `ConstraintLayout`.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?listPreferredItemHeight"
