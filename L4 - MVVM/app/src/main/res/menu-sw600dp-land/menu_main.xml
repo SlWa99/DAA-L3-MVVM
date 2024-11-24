@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Nom du fichier : main_menu.xml
+    Description    : Menu principal de l'application, permettant de trier les notes et d'accéder à
+                     des actions supplémentaires telles que l'ajout et la suppression de notes.
+    Auteur         : Bugna, Slimani & Steiner
+    Date           : 22 novembre 2024
+-->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
