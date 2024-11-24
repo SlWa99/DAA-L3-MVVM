@@ -29,7 +29,7 @@ interface NoteDao {
      * @return L'identifiant généré pour la note insérée.
      */
     @Insert
-    fun insertNote(note: Note) : Long // TODO check "fun insert(note: Note)" ptetre doublon
+    fun insertNote(note: Note) : Long
 
     /**
      * Insère ou met à jour une note dans la base de données.

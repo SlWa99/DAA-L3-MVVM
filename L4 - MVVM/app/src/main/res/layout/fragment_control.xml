@@ -8,33 +8,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="@dimen/margin_large">
 
     <!-- Compteur de notes -->
     <TextView
         android:id="@+id/note_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notes: 0"
-        android:textSize="18sp"
+        android:text="@string/notes_counter_empty"
+        android:textSize="@dimen/text_size_title"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="@dimen/margin_large" />
 
     <!-- Bouton pour créer une nouvelle note -->
     <Button
         android:id="@+id/button_create_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Créer une note"
+        android:text="@string/action_generer"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="@dimen/margin_small" />
 
     <!-- Bouton pour supprimer toutes les notes -->
     <Button
         android:id="@+id/button_delete_all"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Supprimer toutes les notes"
+        android:text="@string/action_supprimer"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

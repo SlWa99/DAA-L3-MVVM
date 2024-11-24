@@ -30,7 +30,7 @@ class NoteRepository(private val noteDao: NoteDao) {
      * @param note Une instance de [NoteAndSchedule] représentant une note
      * et éventuellement un programme associé.
      */
-    suspend fun insert(note: NoteAndSchedule) {
+    private suspend fun insert(note: NoteAndSchedule) {
         withContext(Dispatchers.IO) {
             // 1. Insérer la note et récupérer son ID
             val noteId = noteDao.insertNote(note.note)  // Utiliser insertNote au lieu de insert

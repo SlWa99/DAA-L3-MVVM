@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.heigvd.iict.daa.template.R
@@ -27,9 +26,6 @@ import ch.heigvd.iict.daa.template.viewmodel.NoteViewModelFactory
  * Permet d'ajouter une note aléatoire et de supprimer toutes les notes existantes.
  */
 class ControlFragment : Fragment() {
-
-    private lateinit var noteRepository: NoteRepository
-    private lateinit var noteCountTextView: TextView
 
     private lateinit var binding: FragmentControlBinding
 
@@ -53,22 +49,6 @@ class ControlFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val view = inflater.inflate(R.layout.fragment_control, container, false)
-//        noteCountTextView = view.findViewById(R.id.note_count)
-//
-//        val createButton: Button = view.findViewById(R.id.button_create_note)
-//        val deleteButton: Button = view.findViewById(R.id.button_delete_all)
-//
-//        createButton.setOnClickListener {
-//            addRandomNote()
-//        }
-//
-//        deleteButton.setOnClickListener {
-//            deleteAllNotes()
-//        }
-//
-//        return view
-
         binding = FragmentControlBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -76,30 +56,14 @@ class ControlFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.countNotes.observe(viewLifecycleOwner) {
-            binding.noteCount.text = getString(R.string.note_database).format(it)
+        viewModel.countNotes.observe(viewLifecycleOwner) { count ->
+            if (count?.toInt() == 0) {
+                binding.noteCount.text = getString(R.string.notes_counter_empty) // Affiche "No notes"
+            } else {
+                binding.noteCount.text = getString(R.string.notes_counter).format(count) // Affiche le nombre
+            }
         }
-
         binding.buttonCreateNote.setOnClickListener {viewModel.generateANote()}
         binding.buttonDeleteAll.setOnClickListener {viewModel.deleteAllNotes()}
-
     }
-
-//    /**
-//     * Ajoute une note aléatoire en utilisant le repository.
-//     */
-//    private fun addRandomNote() {
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            noteRepository.generateANote()
-//        }
-//    }
-//
-//    /**
-//     * Supprime toutes les notes en utilisant le repository.
-//     */
-//    private fun deleteAllNotes() {
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            noteRepository.deleteAllNotes()
-//        }
-//    }
 }

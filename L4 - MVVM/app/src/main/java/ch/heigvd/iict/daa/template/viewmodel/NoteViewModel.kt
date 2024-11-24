@@ -20,7 +20,6 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() {
 
     val allNotes = repository.allNotes
     val countNotes = repository.notesCount
-
     val sortedNotes = MutableLiveData(SortType.BY_DATE)
 
     /**

@@ -24,9 +24,9 @@ import java.util.*
  */
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
-    var items = listOf<NoteAndSchedule>()
-    val SCHEDULE_VIEW_TYPE = 1
-    val NO_SCHEDULE_VIEW_TYPE = 0
+    private var items = listOf<NoteAndSchedule>()
+    private val scheduleViewType = 1
+    private val noScheduleViewType = 0
 
     /**
      * ViewHolder personnalisé pour chaque élément de la liste.
@@ -78,7 +78,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
             )
 
             // Gestion de l'échéance (schedule)
-            if (viewType == SCHEDULE_VIEW_TYPE && schedule != null) {
+            if (viewType == scheduleViewType && schedule != null) {
                 scheduleIcon?.visibility = View.VISIBLE
                 scheduleDate?.visibility = View.VISIBLE
 
@@ -126,7 +126,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
      * @return Un NoteViewHolder contenant la vue correspondante.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val layout = if (viewType == SCHEDULE_VIEW_TYPE) {
+        val layout = if (viewType == scheduleViewType) {
             R.layout.fragment_notes_schedule
         } else {
             R.layout.fragment_notes_list
@@ -151,7 +151,7 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
      */
     override fun getItemViewType(position: Int): Int {
         println("Note at position $position has schedule: ${items[position].schedule != null}")
-        return if (items[position].schedule != null) SCHEDULE_VIEW_TYPE else NO_SCHEDULE_VIEW_TYPE
+        return if (items[position].schedule != null) scheduleViewType else noScheduleViewType
     }
 
     /**

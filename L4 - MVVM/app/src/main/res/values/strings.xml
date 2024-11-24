@@ -9,7 +9,7 @@
 -->
 <resources>
     <!-- Menu Titles -->
-    <string name="menu_sort">Tri</string>
+    <string name="menu_sort">Trier</string>
     <string name="menu_sort_by_creation">Trier par date de création</string>
     <string name="menu_sort_by_schedule">Trier par date prévue</string>
     <string name="menu_actions">Actions</string>
@@ -18,8 +18,6 @@
 
     <!-- Toolbar Title -->
     <string name="app_name">Labo 4</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Preferences -->
     <string name="sorted_choice">sorted_choice</string>
@@ -33,4 +31,10 @@
 
     <!-- Other strings -->
     <string name="error_unknown_viewmodel">Unknown ViewModel class</string>
+    <string name="my_notes">My notes</string>
+    <string name="just_for_fun">Just for fun</string>
+    <string name="action_generer">Générer</string>
+    <string name="action_supprimer">Supprimer</string>
+    <string name="notes_counter">%d</string>
+    <string name="notes_counter_empty">No notes</string>
 </resources>

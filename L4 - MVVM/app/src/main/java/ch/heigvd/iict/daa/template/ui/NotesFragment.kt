@@ -29,7 +29,6 @@ import ch.heigvd.iict.daa.template.repository.NoteRepository
 class NotesFragment : Fragment() {
 
     private lateinit var notesAdapter: NotesAdapter
-
     private lateinit var binding: FragmentNotesBinding
 
     // Initialisation du ViewModel partagé avec l'activité principale

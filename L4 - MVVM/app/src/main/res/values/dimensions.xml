@@ -6,5 +6,20 @@
     Date           : 23 novembre 2024
 -->
 <resources>
+    <!-- Dimensions nulles -->
     <dimen name="null_size">0dp</dimen>
+
+    <!-- Marges et paddings -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">10dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+
+    <!-- Taille des images -->
+    <dimen name="icon_size">55dp</dimen>
+    <dimen name="schedule_icon_size">40dp</dimen>
+
+    <!-- Tailles de texte -->
+    <dimen name="text_size_title">18sp</dimen>
+    <dimen name="text_size_description">14sp</dimen>
+    <dimen name="text_size_schedule">12sp</dimen>
 </resources>
