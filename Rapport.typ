@@ -94,4 +94,8 @@ _L’accès à la liste des notes issues de la base de données Room se fait ave
 == 6.3
 _Les notes affichées dans la RecyclerView ne sont pas sélectionnables ni cliquables. Comment procéderiez-vous si vous souhaitiez proposer une interface permettant de sélectionner une note pour l’éditer ?_
 
-En modifiant l'adaptateur pour ajouter le bind sur l'évenement `OnClickListener` au holder en utilisant `setOnClickListener`. Il faut ajouter aussi dans les fragments le lancmeent de l'activité d'édition de note.
+Pour permettre de sélectionner une note dans une RecyclerView afin de l’éditer, il est nécessaire d’apporter quelques modifications à l’adaptateur et de prévoir une activité ou un fragment dédié à l’édition. Tout d’abord, l’adaptateur doit être configuré pour détecter les clics sur chaque élément de la liste. Cela se fait en ajoutant un OnClickListener à la vue correspondant à chaque note dans le ViewHolder. Plutôt que de gérer directement l’action à réaliser dans l’adaptateur, il est préférable d’utiliser un système de callback ou une interface pour notifier l’activité ou le fragment qu’une note a été sélectionnée.
+
+Une fois le clic détecté, l’activité ou le fragment qui héberge la RecyclerView peut réagir en lançant une activité d’édition. Cette nouvelle activité doit recevoir les informations nécessaires sur la note, par exemple via un Intent contenant l’identifiant ou d’autres données de la note. L’interface d’édition permettra alors à l’utilisateur de modifier les champs de la note et de valider ses changements.
+
+Lorsque l’édition est terminée, il est important de revenir à la liste des notes avec une mise à jour pour refléter les modifications apportées. Cela peut se faire en rechargeant les données depuis la base ou en notifiant directement l’adaptateur d’un changement. Cette approche garantit une expérience utilisateur fluide tout en gardant le code bien organisé.
